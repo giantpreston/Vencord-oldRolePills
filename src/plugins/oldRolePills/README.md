@@ -2,4 +2,4 @@
 
 Restores the classic Discord 2020 role pills, with matching role pill outlines and dots.
 
-![](https://raw.githubusercontent.com/giantpreston/Vencord-oldRolePills/refs/heads/main/assets/test.png)
+![](https://github.com/giantpreston/Vencord-oldRolePills/blob/main/assets/test.png?raw=true)
