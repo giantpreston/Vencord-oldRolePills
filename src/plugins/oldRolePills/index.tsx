@@ -23,7 +23,7 @@ import { React } from "@webpack/common";  // Import React from the webpack commo
 import { findByCodeLazy } from "@webpack"; // Correct import for module searching in Vencord
 
 const settings = definePluginSettings({
-    roleDotWidth: {
+    roleDotXAxisSize: {
         type: OptionType.SLIDER,
         description: "Set the Role dot's width (in pixels)",
         default: 4,
@@ -31,7 +31,7 @@ const settings = definePluginSettings({
         stickToMarkers: false,
         restartNeeded: true
     },
-    roleDotHeight: {
+    roleDotYAxisSize: {
         type: OptionType.SLIDER,
         description: "Set the Role dot's height (in pixels)",
         default: 4,
@@ -51,7 +51,7 @@ export default definePlugin({
         // Inject styles for old role pill appearance
         const style = document.createElement("style");
         style.id = "old-role-pills-style";
-        style.textContent = 
+        style.textContent = `
             .old-role-pill {
                 border: 1px solid currentColor !important;
                 border-radius: 9999px !important;
@@ -66,7 +66,7 @@ export default definePlugin({
                 height: 6px !important;
                 margin-right: 4px !important;
             }
-        ;
+        `;
         document.head.appendChild(style);
 
         // Find the RolePill component and patch it
@@ -106,7 +106,7 @@ export default definePlugin({
                     const dotColor = computedStyle.backgroundColor || computedStyle.color;
         
                     // Apply the color to the role pill's border and text color
-                    pill.style.border = 1px solid ${dotColor};  // Set border to role dot color
+                    pill.style.border = `1px solid ${dotColor}`;  // Set border to role dot color
                     pill.style.color = dotColor;  // Set text color to role dot color
         
                     // Make the pill rounded (if it's not already) and ensure clean appearance
@@ -120,8 +120,8 @@ export default definePlugin({
                         roleDotElement.style.marginRight = '0px';  // Smaller space between dot and text
         
                         // Make the dot smaller by reducing the width and height of the svg
-                        roleDotElement.style.width = ${settings.store.roleDotWidth}px;  // Reduce dot size (adjust as necessary)
-                        roleDotElement.style.height = ${settings.store.roleDotHeight}px; // Same for height
+                        roleDotElement.style.width = `${settings.store.roleDotXAxisSize}px`;  // Reduce dot size (adjust as necessary)
+                        roleDotElement.style.height = `${settings.store.roleDotYAxisSize}px`; // Same for height
                     }
         
                     // If you're using flexbox (as the CSS suggests), apply a small gap between items
