@@ -148,4 +148,3 @@ export default definePlugin({
         if (style) style.remove();
     }
 });
-
